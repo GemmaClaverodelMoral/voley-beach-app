@@ -8,6 +8,7 @@
     --light: #ffffff;
     --local-team-color: #bed5fa; 
     --visitor-team-color: #f9caca;
+    --back-body: #ececec;
 
 }
 
@@ -21,7 +22,8 @@ body {
     align-items: flex-start;
     height: 100vh;
     overflow-y: auto;
-    background-color: var(--light-yellow); /* Color de fondo base */
+    background-color: var(--back-body);
+
 }
 
 .container {
@@ -35,7 +37,15 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     margin: auto; /* Centra el contenedor horizontalmente */
-    overflow: hidden; /* Evita que la imagen de fondo se desborde del contenedor */
+    overflow: auto; /* Permite el desplazamiento si el contenido es demasiado grande */
+    padding: 20px; /* Añade un poco de espacio interior para el contenido */
+
+    /* Estilos de Neomorfismo */
+    background-color: #e0e0e0; /* Color base para el efecto de neomorfismo */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 
+        8px 8px 16px #b8b8b8,  /* Sombra interior oscura */
+        -8px -8px 16px #ffffff; /* Sombra exterior clara */
 }
 
 .title {
@@ -54,10 +64,8 @@ body {
     align-items: stretch;
     margin: 0 auto;
     background-color: transparent;
-    padding: 8px;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     width: 90%;
-    min-width: 300px; /* Asegura un ancho mínimo */
 }
 
 fieldset {
