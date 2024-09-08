@@ -1,6 +1,6 @@
 :root {
-    --dark: #443114;
-    --light-yellow: #fee8d1;
+    --dark: black;
+    --light-yellow: #ffeec0;
     --dark-yellow: #e9d0b7;
     --light-blue: #e0e5ec;;
     --dark-blue: #719fac;
@@ -10,6 +10,7 @@
     --visitor-team-color: #f9caca;
 
 }
+
 body {
     font-family: "Montserrat", Arial, sans-serif;
     color: var(--dark);
@@ -20,37 +21,22 @@ body {
     align-items: flex-start;
     height: 100vh;
     overflow-y: auto;
-    position: relative; /* Necesario para el pseudo-elemento */
+    background-color: var(--light-yellow); /* Color de fondo base */
 }
 
-/* Capa para la imagen de fondo */
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://live.staticflickr.com/65535/53981092783_4778c7dd13_b.jpg');
-    background-size: cover;
+.container {
+    position: relative;
+    width: 80%; /* Ajusta el ancho según lo necesites */
+    max-width: 1200px; /* Puedes establecer un ancho máximo */
+    height: 80vh; /* Ajusta la altura según lo necesites */
+    max-height: 800px; /* Puedes establecer una altura máxima */
+    background-image: url('https://live.staticflickr.com/65535/53980202882_22c2a590cc_b.jpg');
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
     background-position: center;
     background-repeat: no-repeat;
-    z-index: -2; /* Asegura que la imagen esté detrás de todo */
+    margin: auto; /* Centra el contenedor horizontalmente */
+    overflow: hidden; /* Evita que la imagen de fondo se desborde del contenedor */
 }
-
-/* Capa para el color de fondo con opacidad */
-body::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--light-yellow); /* Color de fondo con opacidad */
-    opacity: 0.5; /* Ajusta la opacidad del color para el efecto de velo */
-    z-index: -1; /* Asegura que esta capa esté detrás del contenido, pero encima de la imagen */
-}
-
 
 .title {
     margin: 20px;
@@ -89,6 +75,7 @@ fieldset {
 fieldset legend {
     font-weight: bold; /* Fuente en negrita */
     color: var(--dark); /* Color del texto */
+    font-size: 12px;;
     padding: 0 10px; /* Espacio horizontal */
     background: white; /* Fondo del legend */
     border-radius: 5px; /* Bordes redondeados */
