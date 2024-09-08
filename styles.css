@@ -253,7 +253,7 @@ fieldset legend {
 }
 
 .service-player-ball {
-    background-image: url('../Images/game.png');
+    background-image: url('https://live.staticflickr.com/65535/53981422648_9352a2609e.jpg');
     background-size: cover;
     border-radius: 50%;
     width: 30px;
