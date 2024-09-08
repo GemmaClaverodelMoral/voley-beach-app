@@ -1,0 +1,278 @@
+:root {
+    --dark: #443114;
+    --light-yellow: #fee8d1;
+    --dark-yellow: #e9d0b7;
+    --light-blue: #e0e5ec;;
+    --dark-blue: #719fac;
+    --shadow: #b3b3b3;
+    --light: #ffffff;
+    --local-team-color: #bed5fa; 
+    --visitor-team-color: #f9caca;
+
+}
+body {
+    font-family: "Montserrat", Arial, sans-serif;
+    color: var(--dark);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+    position: relative; /* Necesario para el pseudo-elemento */
+}
+
+/* Capa para la imagen de fondo */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../Images/fondo2.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2; /* Asegura que la imagen esté detrás de todo */
+}
+
+/* Capa para el color de fondo con opacidad */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--light-yellow); /* Color de fondo con opacidad */
+    opacity: 0.5; /* Ajusta la opacidad del color para el efecto de velo */
+    z-index: -1; /* Asegura que esta capa esté detrás del contenido, pero encima de la imagen */
+}
+
+
+.title {
+    margin: 20px;
+    font-size: 24px;
+    text-align: center;
+    color: var(--dark);
+    box-shadow: 2px 2px 4px var(--shadow), -2px -2px 4px var(--light);
+    border-radius: 40%;
+    background-color: var(--light-yellow);
+}
+
+.data-enter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 auto;
+    background-color: transparent;
+    padding: 8px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    width: 90%;
+    min-width: 300px; /* Asegura un ancho mínimo */
+}
+
+fieldset {
+    border: none; /* Quita el borde predeterminado */
+    padding: 12px 2%; /* Espacio interno para el contenido */
+    margin: 12px; /* Espacio exterior */
+    box-sizing:border-box;
+    border-radius: 15px 1%; /* Bordes redondeados */
+    box-shadow: 8px 8px 15px var(--shadow), -8px -8px 15px var(--light); /* Sombra neomórfica */
+    background-color: var(--light-blue); /* Color de fondo */
+    font-family: Arial, sans-serif; /* Fuente */
+    position: relative; /* Posición relativa para posicionar el legend correctamente */
+}
+
+fieldset legend {
+    font-weight: bold; /* Fuente en negrita */
+    color: var(--dark); /* Color del texto */
+    padding: 0 10px; /* Espacio horizontal */
+    background: white; /* Fondo del legend */
+    border-radius: 5px; /* Bordes redondeados */
+    position: absolute; /* Posiciona el legend sobre el fieldset */
+    top: -10px; /* Ajusta la posición vertical */
+    left: 20px; /* Ajusta la posición horizontal */
+    box-shadow: 4px 4px 8px var(--shadow), -4px -4px 8px var(--light); /* Sombra neomórfica */
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 8px;
+}
+
+.input-group label {
+    text-align: center;
+    padding: 0;
+}
+
+.input-group input {
+    width: 35%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.color-picker-container {
+    display: flex;
+    align-items: center;
+}
+
+.color-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 7px 7px 14px var(--shadow), -7px -7px 14px var(--light);
+}
+
+.color-palette {
+    display: none;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    position: absolute;
+    background-color: var(--light);
+    border: 1px solid var(--light-blue);
+    border-radius: 6px;
+    box-shadow: 7px 7px 14px var(--shadow), -7px -7px 14px var(--light);
+    padding: 12px;
+}
+
+.color-palette div {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 7px 7px 14px var(--shadow), -7px -7px 14px var(--light);
+}
+
+.select-options {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid var(--dark-blue);
+    border-radius: 4px;
+    color: #66bd66
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 40px;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 52px;
+    text-align: center;
+    user-select: none;
+    box-shadow: inset 4px 4px 8px var(--shadow), inset -4px -4px 8px var(--light);
+}
+
+.score.local {
+    background-color: var(--local-team-color);
+}
+
+.score.visitor {
+    background-color: var(--visitor-team-color);
+}
+
+.score:hover {
+    box-shadow: 4px 4px 8px var(--shadow), -4px -4px 8px var(--light);
+}
+
+.score:focus {
+    outline: none;
+    box-shadow: inset 4px 4px 8px var(--shadow), inset -4px -4px 8px var(--light);
+}
+
+.set-wins {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.final-sets-scores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.final-sets-scores-text {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.final-sets-scores-values {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    gap: 10px;
+}
+
+.final-set-score {
+    background: #e0e5ec;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 4px 4px 8px var(--shadow), -4px -4px 8px var(--light);
+}
+
+.service-player {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    visibility: hidden;
+    border-radius: 20px;
+    margin-top: 8px;
+    text-align: center;
+    width: 60px;
+    height: 30px;
+    background-color: #e0e0e0;
+    box-shadow: inset 4px 4px 8px var(--shadow), inset -4px -4px 8px var(--light);
+}
+
+.service-player.visible {
+    visibility: visible;
+}
+
+.service-player-ball {
+    background-image: url('../Images/game.png');
+    background-size: cover;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    visibility: hidden;
+    box-shadow: 2px 2px 4px var(--shadow), -2px -2px 4px var(--light);
+}
+
+.service-player-ball.visible {
+    visibility: visible;
+}
+
+.service-player-number {
+    font-size: 24px;
+    font-weight: 800;
+    visibility: visible;
+}
