@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let firstServingTeam = 'local'; // El equipo local empieza sirviendo
     let servingTeam = 'local'; // Actualiza con el equipo que está sirviendo
 
+    const colors = ["#f76c6c", "#9af99a;", "#80acf7", "#f7f794", "#f98ef9", "#00FFFF", "#f7aaaa", "#66bd66", "#000080", "#fab83e", "#835b83", "#a9fcfc"];
+    let selectedColorLocal = "#bed5fa";
+    let selectedColorVisitor = "#f9caca";
+
     class TeamData {
         constructor(color, name) {
             // Colores de fondo más suaves
@@ -44,28 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let serverOrder = setServerOrder(firstServer, secondServer,firstServingTeam);
     let actualServer = serverOrder[0];
 
-    let matchHistory = [];
-    /*let point = {
-        set,
-        number,
-        server,
-        winLose,
-        type,
-        shotType,
-        player,
-        winnerTeam,
-        rally,
-        dump,
-        first,
-    }*/
-
-    // funcion que va llenando una matriz historica de cada uno de los puntos jugados
-    function setPoint(point) {
-        matchHistory.push(point);
-    }
-
     document.getElementById('score-local').addEventListener('click', incrementLocalScore);
     document.getElementById('score-visitor').addEventListener('click', incrementVisitorScore);
+
+    createColorPalette('color-palette-local', 'team-local-color-box', selectedColorVisitor);
+    createColorPalette('color-palette-visitor', 'team-visitor-color-box', selectedColorLocal);
+
+    const localColorBox = document.getElementById('team-local-color-box');
+    const visitorColorBox = document.getElementById('team-visitor-color-box');
+
+    localColorBox.style.backgroundColor = selectedColorLocal ;
+    visitorColorBox.style.backgroundColor = selectedColorVisitor;
+
+    localColorBox.addEventListener('click', () => {togglePalette('color-palette-local')});
+    visitorColorBox.addEventListener('click', () => {togglePalette('color-palette-visitor')});
 
     // funcion que rellena el arreglo de orden de servicio
     function setServerOrder(server1, server2, firstTeam) {
@@ -210,23 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
     }
 
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    const colors = ["#f76c6c", "#9af99a;", "#80acf7", "#f7f794", "#f98ef9", "#00FFFF", "#f7aaaa", "#66bd66", "#000080", "#fab83e", "#835b83", "#a9fcfc"];
-    let selectedColorLocal = "#bed5fa";
-    let selectedColorVisitor = "#f9caca";
 
     function togglePalette(paletteId) {
         const palette = document.getElementById(paletteId);
-        if (palette) {
-            palette.style.display = (palette.style.display === 'none' || palette.style.display === '') ? 'flex' : 'none';
-        } else {
-            console.error(`No se encontró la paleta con el ID: ${paletteId}`);
-        }
+        palette.style.display = (palette.style.display === 'none' || palette.style.display === '') ? 'flex' : 'none';
     }
 
-    function createColorPalette(paletteId, colorBoxId, opposingColor) {
+    function createColorPalette(paletteId, colorBoxId) {
         const palette = document.getElementById(paletteId);
         const colorBox = document.getElementById(colorBoxId);
         
@@ -235,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        colors.forEach(color => {
+        colors.forEach( color => {
             const colorDiv = document.createElement('div');
             colorDiv.style.backgroundColor = color;
             colorDiv.style.width = '30px';
@@ -243,51 +230,19 @@ document.addEventListener('DOMContentLoaded', () => {
             colorDiv.style.borderRadius = '5px';
             colorDiv.style.cursor = 'pointer';
             colorDiv.addEventListener('click', () => {
-                if (color !== opposingColor) {
-                    if (colorBox) {
-                        colorBox.style.backgroundColor = color;
-                    } else {
-                        console.error(`No se encontró el cuadro de color con el ID: ${colorBoxId}`);
-                    }
-                    palette.style.display = 'none';
-                    if (paletteId === 'color-palette-local') {
-                        selectedColorLocal = color;
-                    } else {
-                        selectedColorVisitor = color;
-                    }
+                colorBox.style.backgroundColor = color;
+                palette.style.display = 'none';
+                if (paletteId === 'color-palette-local') {
+                    selectedColorLocal = color;
                 } else {
-                    alert('Este color ya ha sido seleccionado por el otro equipo. Por favor, elige otro color.');
+                    selectedColorVisitor = color;
                 }
             });
             palette.appendChild(colorDiv);
         });
     }
+    
 
-    createColorPalette('color-palette-local', 'team-local-color-box', selectedColorVisitor);
-    createColorPalette('color-palette-visitor', 'team-visitor-color-box', selectedColorLocal);
-
-    // Añadir un evento de clic al cuadro de color para mostrar la paleta de colores
-    const localColorBox = document.getElementById('team-local-color-box');
-    const visitorColorBox = document.getElementById('team-visitor-color-box');
-    // Inicializar el color de cada equipo
-    localColorBox.style.backgroundColor = "#bed5fa";
-    visitorColorBox.style.backgroundColor = "#f9caca";
-
-    if (localColorBox) {
-        localColorBox.addEventListener('click', () => {
-            togglePalette('color-palette-local');
-        });
-    } else {
-        console.error('No se encontró el cuadro de color del equipo local.');
-    }
-
-    if (visitorColorBox) {
-        visitorColorBox.addEventListener('click', () => {
-            togglePalette('color-palette-visitor');
-        });
-    } else {
-        console.error('No se encontró el cuadro de color del equipo visitante.');
-    }
 });
 
 

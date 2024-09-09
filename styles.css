@@ -3,52 +3,66 @@
     --light-yellow: #ffeec0;
     --dark-yellow: #e9d0b7;
     --light-blue: #e0e5ec;;
-    --dark-blue: #719fac;
+    --dark-blue: #93a4a8;
     --shadow: #b3b3b3;
     --light: #ffffff;
     --local-team-color: #bed5fa; 
     --visitor-team-color: #f9caca;
-    --back-body: #ececec;
+    --back-body: #fdf7e4;
 
 }
 
 body {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: "Montserrat", Arial, sans-serif;
     color: var(--dark);
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
     height: 100vh;
     overflow-y: auto;
     background-color: var(--back-body);
 
 }
+p {
+    margin:0;
+}
 
 .container {
     position: relative;
-    width: 80%; /* Ajusta el ancho según lo necesites */
-    max-width: 1200px; /* Puedes establecer un ancho máximo */
-    height: 80vh; /* Ajusta la altura según lo necesites */
-    max-height: 800px; /* Puedes establecer una altura máxima */
+    width: 90%; 
+    max-width: 1200px; 
+    height: 80vh;
+    max-height: 800px;
+    background-color: #e0e0e0; 
     background-image: url('https://live.staticflickr.com/65535/53980202882_22c2a590cc_b.jpg');
-    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
-    margin: auto; /* Centra el contenedor horizontalmente */
-    overflow: auto; /* Permite el desplazamiento si el contenido es demasiado grande */
-    padding: 20px; /* Añade un poco de espacio interior para el contenido */
-
-    /* Estilos de Neomorfismo */
-    background-color: #e0e0e0; /* Color base para el efecto de neomorfismo */
-    border-radius: 20px; /* Bordes redondeados */
-    box-shadow: 
-        8px 8px 16px #b8b8b8,  /* Sombra interior oscura */
-        -8px -8px 16px #ffffff; /* Sombra exterior clara */
+    margin: 10px auto 20px; 
+    overflow-y: auto; 
+    padding: 10 20px 20px 20px; 
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px var(--shadow), -2px -2px 4px var(--light);
 }
 
 .title {
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--dark);
+    box-shadow: 2px 2px 4px var(--shadow), -2px -2px 4px var(--light);
+    border-radius: 10px;
+    background-color: var(--light-yellow);
+    background-image: url('https://live.staticflickr.com/65535/53980202882_22c2a590cc_b.jpg');
+}
+
+.title2 {
     margin: 20px;
     font-size: 24px;
     text-align: center;
@@ -70,7 +84,6 @@ body {
 
 fieldset {
     border: none; /* Quita el borde predeterminado */
-    padding: 12px 2%; /* Espacio interno para el contenido */
     margin: 12px; /* Espacio exterior */
     box-sizing:border-box;
     border-radius: 15px 1%; /* Bordes redondeados */
@@ -138,6 +151,7 @@ fieldset legend {
     border-radius: 6px;
     box-shadow: 7px 7px 14px var(--shadow), -7px -7px 14px var(--light);
     padding: 12px;
+    z-index: 3;
 }
 
 .color-palette div {
@@ -153,7 +167,7 @@ fieldset legend {
     font-size: 14px;
     border: 1px solid var(--dark-blue);
     border-radius: 4px;
-    color: #66bd66
+    color: var(--dark);
 }
 
 .scoreboard {
@@ -173,6 +187,7 @@ fieldset legend {
 
 .score {
     font-size: 40px;
+    font-weight: 800;
     border-radius: 20px;
     border: none;
     padding: 10px 10px;
@@ -216,6 +231,7 @@ fieldset legend {
 .final-sets-scores-text {
     font-size: 18px;
     font-weight: bold;
+    text-align: center;
     margin-bottom: 10px;
 }
 
@@ -228,8 +244,10 @@ fieldset legend {
 .final-set-score {
     background: #e0e5ec;
     border-radius: 10px;
-    padding: 10px;
+    padding: 4px;
     font-size: 18px;
+    color: var(--dark-blue);
+    font-weight: 800;
     text-align: center;
     box-shadow: 4px 4px 8px var(--shadow), -4px -4px 8px var(--light);
 }
@@ -237,10 +255,11 @@ fieldset legend {
 .service-player {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content:space-around;
+    padding: 8px;
     visibility: hidden;
     border-radius: 20px;
-    margin-top: 8px;
+    margin: 8px;
     text-align: center;
     width: 60px;
     height: 30px;
@@ -271,3 +290,4 @@ fieldset legend {
     font-weight: 800;
     visibility: visible;
 }
+
